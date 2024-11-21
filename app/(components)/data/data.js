@@ -1,12 +1,11 @@
 
 import dataB from '@/app/firebaseConfig';
-import { collection, getDocs ,doc, deleteDoc} from 'firebase/firestore';
+import { collection, getDocs } from 'firebase/firestore';
 import React from 'react';
 import DeleteButton from '../deleteButton/deleteButton';
 import Image from 'next/image';
 import UpdateButton from '../updateButton/updateButton';
 import Modal from '../modal/modal';
-
 const fetchUserData = async () => {
   const userData = collection(dataB, 'newmessage');
   const userList = await getDocs(userData);
