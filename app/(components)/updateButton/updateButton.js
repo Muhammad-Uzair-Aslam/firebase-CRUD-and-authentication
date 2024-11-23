@@ -7,20 +7,15 @@ import dataB from "@/app/firebaseConfig";
 export default function UpdateButton({ defaultValue }) {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [isUploading, setIsUploading] = useState(false); // State to track upload
-
   const handleOpenModal = () => setIsOpenModal(true);
   const handleClose = () => setIsOpenModal(false);
-
   const handleSubmit = async (event) => {
     event.preventDefault();
-
     const updatedData = {
       name: event.target.name.value,
       email: event.target.email.value,
       message: event.target.message.value,
     };
-
-
     try {
         setIsUploading(true)
       const userDoc = doc(dataB, "newmessage", defaultValue.id); // Reference to the document
@@ -35,7 +30,6 @@ export default function UpdateButton({ defaultValue }) {
       handleClose(); // Close the modal
     }
   };
-
   return (
     <div>
       <Modal
