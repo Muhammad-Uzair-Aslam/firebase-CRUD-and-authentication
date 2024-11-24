@@ -1,11 +1,8 @@
 'use client';
-
 import { useState } from 'react';
 import { addDoc, collection } from 'firebase/firestore';
 import dataB from '@/app/firebaseConfig';
 import axios from 'axios';
-import Modal from '../modal/modal';
-
 export default function Form() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -16,23 +13,18 @@ export default function Form() {
     {
       setImage(e.target.files[0])
     }
-    
   }
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // const docRef=await addDoc(collection(dataB,"formImages"),{url:data,createdAt:new Date(),})
     try {
       if(!image){
         return
-      }
-      
+      } 
       const formData=new FormData();
       formData.append("image",image);
       const response=await axios.post('/api/uploadImage',formData);
       const data=await response.data;
       const dataset=data.data
-      // Get the uploaded image URL
-      // Save data to Firebase Firestore
       await addDoc(collection(dataB, 'newmessage'), {
         name,
         email,
@@ -42,7 +34,6 @@ export default function Form() {
 
       alert('Data added successfully!');
       
-      // Reset form fields
       setName('');
       setEmail('');
       setMessage('');
@@ -109,8 +100,7 @@ export default function Form() {
         type="submit"
         className={`bg-blue-500 text-white font-bold py-2 px-4 rounded-lg 
            'opacity-50 cursor-not-allowed'
-        `}
-        
+        `}   
       >
         Submit
       </button>

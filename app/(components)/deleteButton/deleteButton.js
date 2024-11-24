@@ -1,9 +1,7 @@
 "use client"
 import dataB from '@/app/firebaseConfig'
 import { deleteDoc, doc } from 'firebase/firestore'
-import React, { useEffect } from 'react'
-
-
+import React from 'react'
 export default function DeleteButton(props) {
     const deleteData=async(id)=>{
         try {
