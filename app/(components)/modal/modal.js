@@ -1,8 +1,6 @@
 import React from "react";
-
 const Modal = ({ isOpen, onClose, onSubmit, defaultValues, isUploading }) => {
   if (!isOpen) return null;
-
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
       <div className="bg-white rounded-lg shadow-lg w-11/12 max-w-md">
@@ -16,10 +14,8 @@ const Modal = ({ isOpen, onClose, onSubmit, defaultValues, isUploading }) => {
             &times;
           </button>
         </div>
-        {/* Modal Body */}
         <div className="p-4">
-          <form onSubmit={onSubmit}>
-            {/* Name Field */}
+          <form onSubmit={onSubmit}>  
             <div className="mb-4">
               <label htmlFor="name" className="block text-gray-700 text-sm font-semibold">
                 Name
@@ -33,8 +29,6 @@ const Modal = ({ isOpen, onClose, onSubmit, defaultValues, isUploading }) => {
                 placeholder="Enter Name"
               />
             </div>
-
-            {/* Email Field */}
             <div className="mb-4">
               <label htmlFor="email" className="block text-gray-700 text-sm font-semibold">
                 Email
@@ -48,8 +42,6 @@ const Modal = ({ isOpen, onClose, onSubmit, defaultValues, isUploading }) => {
                 placeholder="Enter Email"
               />
             </div>
-
-            {/* Message Field */}
             <div className="mb-4">
               <label htmlFor="message" className="block text-gray-700 text-sm font-semibold">
                 Message
@@ -62,8 +54,6 @@ const Modal = ({ isOpen, onClose, onSubmit, defaultValues, isUploading }) => {
                 placeholder="Enter Message"
               ></textarea>
             </div>
-
-            {/* Buttons */}
             <div className="flex justify-end space-x-2">
               <button
                 type="button"
