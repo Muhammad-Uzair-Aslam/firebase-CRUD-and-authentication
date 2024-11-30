@@ -1,10 +1,24 @@
 "use client"
 import Link from "next/link";
 import { useSignupValidation } from "../validationSchema/auth";
+import { createUserWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
+import { auth } from "../firebaseConfig";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 export default function Signup() {
-    const {register,handleSubmit,formState:{errors}}=useSignupValidation()
+    const router=useRouter();
+    const {register,handleSubmit,formState:{errors},reset}=useSignupValidation()
     const submitHandler = (values) => {
         console.log("Form values:", values);
+        createUserWithEmailAndPassword(auth,values.email,values.password).then((response)=>{
+            console.log("firebase user",response);
+            alert("User Register successfully")
+            reset()
+            router.push('/login')
+        }).catch(e=>{
+            console.log("catch",e.message)
+            alert("Something went wrong")
+        })
       };
   return (
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-green-500 to-teal-600">

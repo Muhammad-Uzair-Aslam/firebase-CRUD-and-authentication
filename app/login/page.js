@@ -2,17 +2,35 @@
 
 import Link from "next/link";
 import useLoginValidation from "../validationSchema/auth";
+import { onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
+import { useRouter } from "next/navigation";
+import { auth } from "../firebaseConfig";
+import { useEffect, useState } from "react";
 
 export default function Login() {
+  const [islogin,setIsLogin]=useState(true)
+    const router=useRouter()
+    
   // Use the custom hook
   const {
     handleSubmit,
     register,
     formState: { errors },
   } = useLoginValidation();
-
+  
   const submitHandler = (values) => {
-    console.log("Form values:", values);
+    // console.log("Form values:", values);
+    signInWithEmailAndPassword(auth,values.email,values.password).then((response)=>{
+        console.log("response",response)
+        router.push('/');
+        setIsLogin(true);
+        alert("login successfully")
+        return response
+    }).catch((e)=>{
+        console.log("Login Error ", e.message);
+        setIsLogin(false)
+        alert("Please try Again");
+    });
   };
 
   return (
@@ -40,6 +58,7 @@ export default function Login() {
               className="w-full px-4 py-3 mt-1 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
             />
             {errors.password && <p className="text-sm text-red-500">{errors.password.message}</p>}
+            {!islogin && <p className="text-sm text-red-500">User not found</p>}
           </div>
           <button
             type="submit"
