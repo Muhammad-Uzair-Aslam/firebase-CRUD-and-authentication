@@ -1,5 +1,6 @@
 
 import * as Yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 // Define the validation schema
 const loginSchema = Yup.object({
