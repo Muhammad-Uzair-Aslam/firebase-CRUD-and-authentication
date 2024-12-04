@@ -11,7 +11,6 @@ const withAuth = (Component) => {
     const [loading, setLoading] = useState(true); // For loading state
     const [isAuthenticated, setIsAuthenticated] = useState(false); // For authentication state
     const [user,setUser]=useState({})
-
     useEffect(() => {
       const unsubscribe = onAuthStateChanged(auth, (user) => {
         if (user) {

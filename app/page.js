@@ -5,13 +5,11 @@ import Form from "./(components)/form/form";
 import { useRouter } from "next/navigation";
 import { logout } from "./firebaseConfig";
 import withAuth from "@/utils/withAuth";
-
 function Home({ user }) {
   const router = useRouter();
   const handleLogout = () => {
     logout(router);
   };
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-500 to-purple-600 text-white">
       <div className="max-w-3xl mx-auto p-6">
@@ -30,7 +28,6 @@ function Home({ user }) {
             Logout
           </button>
         </div>
-
         {/* Form Section */}
         <div className="mt-6 bg-white shadow-md rounded-lg p-6">
           <h2 className="text-lg font-semibold text-gray-800 mb-4">
@@ -52,5 +49,4 @@ function Home({ user }) {
     </div>
   );
 }
-
 export default withAuth(Home);
