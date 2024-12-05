@@ -10,8 +10,6 @@ import { useEffect, useState } from "react";
 export default function Login() {
   const [islogin,setIsLogin]=useState(true)
     const router=useRouter()
-    
-  // Use the custom hook
   const {
     handleSubmit,
     register,
