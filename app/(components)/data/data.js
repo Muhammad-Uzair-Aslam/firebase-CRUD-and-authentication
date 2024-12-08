@@ -48,7 +48,7 @@ export default async function Data() {
                 <td className="px-6 py-4 text-sm font-medium text-gray-700">{list.id}</td>
                 <td className="px-6 py-4">
                   <div className="flex items-center justify-center">
-                    <Image
+                    <Image 
                       className="rounded-full object-cover"
                       src={list.dataset}
                       width={50}
@@ -64,7 +64,7 @@ export default async function Data() {
                   </span>
                 </td>
                 <td className="px-6 py-4 text-sm text-gray-500">{list.message}</td>
-                <td className="px-6 py-4 flex gap-2">
+                <td className="px-6 py-4 flex gap-2 flex-row justify-self-center">
                   <UpdateButton defaultValue={list} />
                   <DeleteButton id={list.id} />
                 </td>

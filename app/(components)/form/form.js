@@ -44,7 +44,7 @@ export default function Form() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-md mx-auto p-4 bg-white shadow-lg">
+    <form onSubmit={handleSubmit} className="max-w-md mx-auto p-4 text-black bg-white shadow-lg">
       <div className="mb-4">
         <label htmlFor="name" className="block text-gray-700 font-bold mb-2">
           Name:

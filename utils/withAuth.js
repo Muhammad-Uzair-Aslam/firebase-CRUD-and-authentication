@@ -22,12 +22,10 @@ const withAuth = (Component) => {
         }
         setLoading(false); // Authentication check is done
       });
-
       return () => unsubscribe();
     }, [router]);
 
     if (loading) {
-      // Show an animated loader while checking authentication
       return (
         <div className="flex items-center justify-center min-h-screen bg-gray-100">
           <div className="loader"></div>
